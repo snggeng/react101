@@ -1,16 +1,20 @@
 import React, { Component, PropTypes } from 'react'
-//import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import './Header.css'
 
-//Header
+// Header
 export class Header extends Component {
   render () {
     return (
-      <header>
-        <h1>{this.props.title}</h1>
-      </header>
-    );
+      <div className='row'>
+        <div className='col-md-12'>
+          <header>
+            <h1>{this.props.title}</h1>
+          </header>
+        </div>
+      </div>
+    )
   }
 }
 
