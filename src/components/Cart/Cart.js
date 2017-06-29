@@ -1,56 +1,77 @@
-import React, {PropTypes, Component} from 'react'
-import ProductRow from './ProductRow/ProductRow'
-import Create from './Create/Create'
-import GrandTotal from './GrandTotal/GrandTotal'
+import React, { Component} from 'react';
 
-import './Cart.css'
+import ProductRow from './ProductRow/ProductRow';
+import Create from './Create/Create';
+import GrandTotal from './GrandTotal/GrandTotal';
 
-export default class Cart extends Component {
-  constructor (props) {
-    super(props)
+/**
+ * Cart
+ */
+export class Cart extends Component { // eslint-disable-line react/prefer-stateless-function
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      grandTotal: 0,
+      products: []
+    }
   }
 
-  render () {
-    var products = [
-      {
-        name: 'Bear',
-        qty: 2,
-        price: 10.00,
-        img: 'https://s-media-cache-ak0.pinimg.com/736x/4a/d0/1d/4ad01dec05b1f592066e9d78b9fc6762.jpg'},
-      {
-        name: 'Fin',
-        qty: 1,
-        price: 5.00,
-        img: 'http://vignette4.wikia.nocookie.net/adventuretimewithfinnandjake/images/f/f3/Original_Finn.png/revision/latest?cb=20120921151658'
-      },
-      {
-        name: 'Jake',
-        qty: 4,
-        price: 50.00,
-        img: 'http://vignette3.wikia.nocookie.net/adventuretimewithfinnandjake/images/3/3b/Jakesalad.png/revision/latest?cb=20160503014517'
-      }
-    ]
+  updateGrandTotal = (subTotal) => {
+    const grandTotal = this.state.grandTotal + subTotal;
+    this.setState({
+      grandTotal: grandTotal
+    });
+  }
+
+  createProduct = (product) => {
+
+    let newProduct = {};
+    newProduct.title = product.title;
+    newProduct.price = product.price;
+
+    let products = this.state.products;
+    products.push(newProduct);
+
+    this.setState({
+      products: products
+    });
+
+  }
+
+
+  createProductRows = () => {
+
+    var productRows = [];
+
+    this.state.products.forEach((product, index) => {
+      productRows.push(<ProductRow title={product.title} price={product.price} grandtotal={this.updateGrandTotal}/>)
+    });
+
+  return productRows;
+  }
+
+
+
+
+  render() {
+
+    const rows = this.createProductRows();
+
     return (
-      <div>
-        <h1 id='title'>My Shopping Cart</h1>
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Image</th>
-          </tr>
-          {products.map((item) => {
-            return (
-              <ProductRow name={item.name} price={item.price} qty={item.qty} img={item.img} />
-            )
-          })}
-        </table>
+      <div className="row" id="cart">
+        <div className="col-md-12 productRows">
+          {rows}
+        </div>
+        <div className="col-md-12">
+          <Create createProduct={this.createProduct}/>
+        </div>
+        <div className="col-md-12">
+          <GrandTotal value={this.state.grandTotal}/>
+        </div>
       </div>
-    )
+    );
   }
 }
-
-Cart.propTypes = {
-
-}
+export default Cart;

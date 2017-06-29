@@ -1,10 +1,12 @@
-import React, { Component, PropTypes } from 'react'
-// import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import './Header.css'
 
-// Header
-export class Header extends Component {
+/**
+ * Header
+ */
+export class Header extends Component { // eslint-disable-line react/prefer-stateless-function
   render () {
     return (
       <div className='row'>
@@ -19,7 +21,7 @@ export class Header extends Component {
 }
 
 Header.propTypes = {
-  title: PropTypes.String
+  title: PropTypes.string
 }
 
 export default Header
