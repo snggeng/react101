@@ -30,6 +30,7 @@ export class Cart extends Component { // eslint-disable-line react/prefer-statel
     let newProduct = {};
     newProduct.title = product.title;
     newProduct.price = product.price;
+    newProduct.id = product.id;
 
     let products = this.state.products;
     products.push(newProduct);

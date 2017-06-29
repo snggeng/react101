@@ -1,15 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-
+import uuid from 'uuid'
 /**
  * Create
  */
-export class Create extends Component {
+class Create extends Component {
    constructor(props){
      super(props);
 
      this.state = {
        title: "",
-       price: 0
+       price: 0,
+       id: uuid.v4()
      };
    }
 
@@ -33,7 +34,8 @@ export class Create extends Component {
 
     this.setState({
       title: "",
-      price: 0
+      price: 0,
+      id: uuid.v4()
     });
   }
 
