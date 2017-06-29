@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 
 import ProductRow from './ProductRow/ProductRow'
 import Create from './Create/Create'
@@ -7,9 +7,10 @@ import GrandTotal from './GrandTotal/GrandTotal'
 /**
  * Cart
  */
-export class Cart extends Component { // eslint-disable-line react/prefer-stateless-function
+export class Cart extends Component {
+  // eslint-disable-line react/prefer-stateless-function
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -19,9 +20,7 @@ export class Cart extends Component { // eslint-disable-line react/prefer-statel
     }
   }
 
-  newdsa = () => {
-
-  }
+  newdsa = () => {}
 
   updateGrandTotal = (id, newSubTotal) => {
     let subtotals = this.state.subtotals
@@ -39,7 +38,7 @@ export class Cart extends Component { // eslint-disable-line react/prefer-statel
     })
   }
 
-  createProduct = (product) => {
+  createProduct = product => {
     let newProduct = {}
     newProduct.title = product.title
     newProduct.price = product.price
@@ -57,20 +56,20 @@ export class Cart extends Component { // eslint-disable-line react/prefer-statel
     let productRows = []
 
     this.state.products.forEach((product, index) => {
-      productRows.push(<ProductRow title={product.title}
-                                   price={product.price}
-                                   grandtotal={this.updateGrandTotal}
-                                   id={product.id} />)
+      productRows.push(
+        <ProductRow
+          title={product.title}
+          price={product.price}
+          grandtotal={this.updateGrandTotal}
+          id={product.id}
+        />
+      )
     })
 
-  return productRows
+    return productRows
   }
 
-
-
-
   render() {
-
     const rows = this.createProductRows()
 
     return (
