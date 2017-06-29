@@ -15,7 +15,7 @@ export class ProductRow extends Component { // eslint-disable-line react/prefer-
   onChange = (e) => {
     const qty = e.target.value;
     const subTotal = this.props.price * qty;
-    this.props.grandtotal(subTotal);
+    this.props.grandtotal(this.props.id, subTotal);
 
     this.setState({
       subtotal: subTotal
