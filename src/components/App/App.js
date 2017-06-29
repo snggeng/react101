@@ -1,23 +1,26 @@
-import React, { Component } from 'react'
+// Import modules
+import React, { Component } from 'react';
 
 // Import components
-// import Subtitle from '../Subtitle/Subtitle'
-import Header from '../Header/Header'
-import Cart from '../Cart/Cart'
-import Footer from '../Footer/Footer'
+import Header from '../Header/Header';
+import Cart from '../Cart/Cart';
+import Footer from '../Footer/Footer';
+
 // Import static assets
-// import logo from './logo.svg'
-import './App.css'
+import logo from './logo.svg';
+import './App.css';
 
 class App extends Component {
-  render () {
+  render() {
     return (
-      <div className='App container'>
-        <Header title='WDI Shop' />
-        <Cart />
+      <div className="App container">
+        <Header title="My amazing cart"/>
+        <Cart/>
+        <Footer/>
+
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
